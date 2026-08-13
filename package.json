@@ -6,6 +6,7 @@
     "@maplibre/maplibre-react-native": "^11.3.6",
     "@react-navigation/bottom-tabs": "^7.18.16",
     "@react-navigation/native": "^7.3.16",
+    "dotenv": "^16.4.5",
     "expo": "~57.0.12",
     "expo-blur": "~57.0.2",
     "expo-camera": "~57.0.3",
