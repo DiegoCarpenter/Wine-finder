@@ -1,362 +1,165 @@
 [
   {
+    "id": "Carpenter-Family-Winery",
+    "name": "Ciento Cellars",
+    "lat": 35.62621788517303,
+    "lng": -120.71487524548839,
+    "elevation": 1300,
+    "description": "",
+    "tags": []
+  },
+  {
+    "id": "ChIJLagj-Pcp7YARbcY5T0G3ULU",
     "name": "JUSTIN Vineyards & Winery",
     "lat": 35.6548805,
     "lng": -120.90080259999999,
-    "id": "ChIJLagj-Pcp7YARbcY5T0G3ULU"
+    "elevation": 387,
+    "description": "",
+    "tags": []
   },
   {
+    "id": "ChIJJ3YAROnQ7IARvm6J8P_mib8",
     "name": "DAOU Vineyards",
     "lat": 35.6412775,
     "lng": -120.78433050000001,
-    "id": "ChIJJ3YAROnQ7IARvm6J8P_mib8"
+    "elevation": 640,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Eberle Winery",
-    "lat": 35.6497963,
-    "lng": -120.6281037,
-    "id": "ChIJeTVvevnF7IARFcDEVEFipzU"
-  },
-  {
+    "id": "ChIJVdMu4GHX7IARKNV7uMd1etE",
     "name": "Oso Libre Winery",
     "lat": 35.5953482,
     "lng": -120.8316373,
-    "id": "ChIJVdMu4GHX7IARKNV7uMd1etE"
+    "elevation": 363,
+    "description": "",
+    "tags": []
   },
   {
+    "id": "ChIJG5kWMlDW7IART9NaUncU-3s",
     "name": "Tablas Creek Vineyard",
     "lat": 35.6364063,
     "lng": -120.8597344,
-    "id": "ChIJG5kWMlDW7IART9NaUncU-3s"
+    "elevation": 423,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Robert Hall Winery",
-    "lat": 35.6438088,
-    "lng": -120.63351709999999,
-    "id": "ChIJI0mkdfDF7IARXKeILCDVH5A"
-  },
-  {
-    "name": "Still Waters Vineyards and Tasting Room",
-    "lat": 35.5778367,
-    "lng": -120.58618500000001,
-    "id": "ChIJ97mbNCXB7IARtbfC47xOH9U"
-  },
-  {
-    "name": "Vina Robles Vineyards & Winery",
-    "lat": 35.5917849,
-    "lng": -120.69407020000001,
-    "id": "ChIJw8F17frF7IARy3T_SfIGJUI"
-  },
-  {
+    "id": "ChIJQdN_7xbb7IAR6hOzW3zPVok",
     "name": "Niner Wine Estates",
     "lat": 35.5706343,
     "lng": -120.7420291,
-    "id": "ChIJQdN_7xbb7IAR6hOzW3zPVok"
+    "elevation": 279,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Jada Vineyard & Winery",
-    "lat": 35.5811723,
-    "lng": -120.7965389,
-    "id": "ChIJCxFNcyTa7IARVFbQ2VFO0Ng"
-  },
-  {
+    "id": "ChIJYyddqOXa7IARdy70BGHmvNk",
     "name": "L'Aventure Winery",
     "lat": 35.5900576,
     "lng": -120.74357699999999,
-    "id": "ChIJYyddqOXa7IARdy70BGHmvNk"
+    "elevation": 334,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Le Vigne Winery",
-    "lat": 35.6743802,
-    "lng": -120.6593539,
-    "id": "ChIJXeD2qA_P7IARL5V7I-_Dddk"
-  },
-  {
+    "id": "ChIJq5oWGzDa7IAR74pkqOPPeTk",
     "name": "Denner Vineyards",
     "lat": 35.5770696,
     "lng": -120.79258259999999,
-    "id": "ChIJq5oWGzDa7IAR74pkqOPPeTk"
+    "elevation": 347,
+    "description": "",
+    "tags": []
   },
   {
+    "id": "ChIJ__9TGmjF7IARJhD1KKtt-Us",
     "name": "Copia Vineyards and Winery",
     "lat": 35.6748002,
     "lng": -120.72942689999999,
-    "id": "ChIJ__9TGmjF7IARJhD1KKtt-Us"
+    "elevation": 276,
+    "description": "",
+    "tags": []
   },
   {
+    "id": "ChIJI60GDp3F7IAR-QdMWt42X3s",
     "name": "Law Estate Wines",
     "lat": 35.6269428,
     "lng": -120.76428759999999,
-    "id": "ChIJI60GDp3F7IAR-QdMWt42X3s"
+    "elevation": 466,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Bianchi Winery Paso Robles",
-    "lat": 35.6501868,
-    "lng": -120.5772404,
-    "id": "ChIJF4GhDjXG7IARPcZvDvh6rLs"
-  },
-  {
-    "name": "Cass Winery",
-    "lat": 35.5976789,
-    "lng": -120.56500219999998,
-    "id": "ChIJK_fYeC7H7IAR8liHtO2UPtk"
-  },
-  {
-    "name": "Adelaida Vineyards and Winery",
-    "lat": 35.6457001,
-    "lng": -120.8024435,
-    "id": "ChIJo-5SWSjR7IARXp9cdqmlAeo"
-  },
-  {
-    "name": "Four Lanterns Winery",
-    "lat": 35.5690204,
-    "lng": -120.74035350000001,
-    "id": "ChIJ14J0whbb7IARBzSnsjzOMhw"
-  },
-  {
-    "name": "Sculpterra Winery and Sculpture Garden",
-    "lat": 35.6005134,
-    "lng": -120.6106611,
-    "id": "ChIJe_N2vJDG7IARTsPpLipRKuI"
-  },
-  {
-    "name": "Serial Wines Tasting Lounge",
-    "lat": 35.6273298,
-    "lng": -120.69001689999999,
-    "id": "ChIJtZbRDwrF7IAR53mnqZT8RRo"
-  },
-  {
-    "name": "Steinbeck Vineyards & Winery",
-    "lat": 35.640319,
-    "lng": -120.589985,
-    "id": "ChIJz4ECYkTG7IARm4jck8Sh1Ds"
-  },
-  {
+    "id": "ChIJI4MbNBnb7IARUxoWcSpO1_k",
     "name": "Booker Vineyard",
     "lat": 35.5783043,
     "lng": -120.73906670000001,
-    "id": "ChIJI4MbNBnb7IARUxoWcSpO1_k"
+    "elevation": 295,
+    "description": "",
+    "tags": []
   },
   {
+    "id": "ChIJrcWX443H7IARUCYhzNFadao",
     "name": "Tobin James Cellars",
     "lat": 35.6546774,
     "lng": -120.53445849999999,
-    "id": "ChIJrcWX443H7IARUCYhzNFadao"
+    "elevation": 309,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Allegretto Vineyard Resort Paso Robles",
-    "lat": 35.6474127,
-    "lng": -120.6704236,
-    "id": "ChIJi-CMsYbP7IAR8chSxe7Xf7E"
-  },
-  {
-    "name": "Dresser Winery, Vineyard and Luxury Vacation Rental Villa",
-    "lat": 35.6064508,
-    "lng": -120.59291189999999,
-    "id": "ChIJyycVmOzG7IARwZTjtAzBfDI"
-  },
-  {
-    "name": "Hearst Ranch Winery (Paso Robles)",
-    "lat": 35.7065201,
-    "lng": -120.6797824,
-    "id": "ChIJH0_ohG_O7IARByONSEbeF5Q"
-  },
-  {
+    "id": "ChIJjUCKsYbP7IARxC5mCNVclyE",
     "name": "Riboli Family of San Antonio Winery, Bistro + Tasting Room",
     "lat": 35.645123,
     "lng": -120.67280600000001,
-    "id": "ChIJjUCKsYbP7IARxC5mCNVclyE"
+    "elevation": 239,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "LXV Winery & Pairings Tasting Room",
-    "lat": 35.6282564,
-    "lng": -120.6888006,
-    "id": "ChIJhwrm9WfF7IARFJ6trn0-bOQ"
-  },
-  {
-    "name": "Paris Valley Road Estate Winery",
-    "lat": 35.6589277,
-    "lng": -120.59592059999999,
-    "id": "ChIJvYO9TybH7IARGmt6GKiPtpI"
-  },
-  {
+    "id": "ChIJKVnkOx3b7IAR93VFyqqpT2A",
     "name": "Caliza Winery",
     "lat": 35.6218758,
     "lng": -120.71509,
-    "id": "ChIJKVnkOx3b7IAR93VFyqqpT2A"
+    "elevation": 342,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Thacher Winery & Vineyard",
-    "lat": 35.61317400000001,
-    "lng": -120.844502,
-    "id": "ChIJj8k_VAvX7IAReGj-9fdt54k"
-  },
-  {
+    "id": "ChIJPUCclb_E7IARDwV-XEzQZfA",
     "name": "Clos Solène Winery",
     "lat": 35.586612099999996,
     "lng": -120.76822580000001,
-    "id": "ChIJPUCclb_E7IARDwV-XEzQZfA"
+    "elevation": 358,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Pear Valley Vineyard Inc",
-    "lat": 35.636556899999995,
-    "lng": -120.6081236,
-    "id": "ChIJxyx-Pm7G7IARAQzz60sx-W0"
-  },
-  {
-    "name": "AronHill Winery & Vineyards",
-    "lat": 35.5559844,
-    "lng": -120.7556762,
-    "id": "ChIJeUELPp7b7IARyObT4GsdVC0"
-  },
-  {
-    "name": "Tank Garage Winery",
-    "lat": 35.6277723,
-    "lng": -120.68927219999999,
-    "id": "ChIJPSG-CJbF7IARP-tBqdwIBiA"
-  },
-  {
-    "name": "Willow Creek Wine Co.",
-    "lat": 35.560022499999995,
-    "lng": -120.77867069999999,
-    "id": "ChIJhdn8Uv3b7IARr4QVUq5MK-w"
-  },
-  {
-    "name": "Pelletiere Estate Vineyard and Winery",
-    "lat": 35.569316,
-    "lng": -120.755181,
-    "id": "ChIJ7dk-0wfb7IARjBwSiD9wLxo"
-  },
-  {
-    "name": "Herman Story Wines",
-    "lat": 35.627358199999996,
-    "lng": -120.68587330000001,
-    "id": "ChIJ-e35jGjF7IARAKEySqTZUDg"
-  },
-  {
+    "id": "ChIJr8-bdXvQ7IARfnHP6jy8wJc",
     "name": "Calcareous Vineyard Tasting Room",
     "lat": 35.6265681,
     "lng": -120.75207099999999,
-    "id": "ChIJr8-bdXvQ7IARfnHP6jy8wJc"
+    "elevation": 440,
+    "description": "",
+    "tags": []
   },
+
   {
-    "name": "Hunt Cellars Winery",
-    "lat": 35.566525999999996,
-    "lng": -120.74580800000001,
-    "id": "ChIJ_YydAxLb7IAR0npMQLp8amQ"
-  },
-  {
-    "name": "Levo Wine",
-    "lat": 35.576510999999996,
-    "lng": -120.68984549999999,
-    "id": "ChIJDYrz7r_E7IARI2ZSQECs_Nc"
-  },
-  {
+    "id": "ChIJsQ7i4b_E7IARf3yt3yvbrUk",
     "name": "Nicora Winery",
     "lat": 35.576625,
     "lng": -120.68900699999999,
-    "id": "ChIJsQ7i4b_E7IARf3yt3yvbrUk"
-  },
-  {
-    "name": "Le Cuvier Winery and Tasting Room",
-    "lat": 35.6511639,
-    "lng": -120.732025,
-    "id": "ChIJ-7x39jjQ7IARLzSj78v-cDU"
-  },
-  {
-    "name": "J. Lohr Vineyards & Wines",
-    "lat": 35.690881999999995,
-    "lng": -120.641421,
-    "id": "ChIJizWWc9vO7IARL8TIr-I7S6w"
-  },
-  {
-    "name": "Treana Winery",
-    "lat": 35.5879453,
-    "lng": -120.7213555,
-    "id": "ChIJk2Rqv9fa7IARYDkU2FoGYSM"
-  },
-  {
-    "name": "CaliPaso Tasting Room",
-    "lat": 35.627901,
-    "lng": -120.68985819999999,
-    "id": "ChIJWXtTQ13F7IAR6NLypf9RzzE"
-  },
-  {
-    "name": "Epoch Estate Wines",
-    "lat": 35.5438887,
-    "lng": -120.826686,
-    "id": "ChIJqf9QZxPZ7IARE_XXVOiZSFA"
-  },
-  {
-    "name": "Emercy Wines",
-    "lat": 35.5709944,
-    "lng": -120.6962823,
-    "id": "ChIJj9r3u_zF7IAR48uIbYhkNa4"
-  },
-  {
-    "name": "Parrish Family Vineyard",
-    "lat": 35.657677,
-    "lng": -120.758676,
-    "id": "ChIJdxtaSV3F7IARW8RMPD6Ypj8"
-  },
-  {
-    "name": "Sea Shell Cellars",
-    "lat": 35.6276266,
-    "lng": -120.68923009999997,
-    "id": "ChIJ1VCq-WfF7IARh7O7pOws61w"
-  },
-  {
-    "name": "Allegretto Wines",
-    "lat": 35.6474086,
-    "lng": -120.6704971,
-    "id": "ChIJ52eJX4HP7IARYeUylZ5q9jQ"
-  },
-  {
-    "name": "Barr Estate Winery",
-    "lat": 35.6395421,
-    "lng": -120.57278099999999,
-    "id": "ChIJ4XaB81LG7IARJ7IYpkxy4dE"
-  },
-  {
-    "name": "Brecon Estate",
-    "lat": 35.5978941,
-    "lng": -120.83167680000001,
-    "id": "ChIJ11tsK2DX7IARKKoFXoIUOxs"
-  },
-  {
-    "name": "J Dusi Wines- Winery and Tasting Room",
-    "lat": 35.5820875,
-    "lng": -120.7146517,
-    "id": "ChIJ4_X1RSzb7IARFqx5LFas-Xg"
-  },
-  {
-    "name": "Brochelle Vineyards",
-    "lat": 35.644143,
-    "lng": -120.65609099999999,
-    "id": "ChIJI2j5E4bF7IAR6-rhKXEzgME"
-  },
-  {
-    "name": "Cypher Winery",
-    "lat": 35.6224227,
-    "lng": -120.68782100000001,
-    "id": "ChIJM2fNyh_Z7IARhxBAibaAOyA"
-  },
-  {
-    "name": "Four Sisters Ranch Vineyards & Winery",
-    "lat": 35.730777499999995,
-    "lng": -120.62359540000001,
-    "id": "ChIJccpfl6vO7IARtD1F8QOE_x0"
-  },
-  {
-    "name": "Union Sacre Winery",
-    "lat": 35.5739618,
-    "lng": -120.6906669,
-    "id": "ChIJcy26lqDx7IARRuV7KK9T0wE"
-  },
-  {
-    "name": "mid•point winery",
-    "lat": 35.6259697,
-    "lng": -120.6878829,
-    "id": "ChIJq2HNyh_Z7IARRThnjvL6Rw4"
+    "elevation": 229,
+    "description": "",
+    "tags": []
   }
 ]

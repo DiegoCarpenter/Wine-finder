@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -12,7 +12,7 @@ import { DeviceMotion } from "expo-sensors";
 
 import wineriesData from "../../data/wineries.json";
 import type { Winery } from "../types/winery";
-import { getBearing, haversineDistanceMiles } from "../utils/geo";
+import { getBearing, haversineDistanceMiles, isLikelyBlocked } from "../utils/geo";
 
 const wineries = wineriesData as Winery[];
 
@@ -21,6 +21,8 @@ const HALF_HORIZONTAL_FIELD_OF_VIEW = HORIZONTAL_FIELD_OF_VIEW_DEGREES / 2;
 const VERTICAL_FIELD_OF_VIEW_DEGREES = 60;
 const LABEL_WIDTH = 140;
 const METERS_PER_MILE = 1609.34;
+const BLOCKED_RECHECK_THRESHOLD_METERS = 100;
+const BLOCKED_OPACITY = 0.4;
 
 /** Normalizes an angle difference to the range (-180, 180]. */
 function normalizeAngleDiff(degrees: number): number {
@@ -36,6 +38,15 @@ export default function CompassScreen() {
   const [heading, setHeading] = useState<number | null>(null);
   const [pitch, setPitch] = useState<number | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [blockedIds, setBlockedIds] = useState<Set<string>>(new Set());
+  const headingRef = useRef<number | null>(null);
+  const lastCheckedLocationRef = useRef<{ lat: number; lng: number } | null>(
+    null
+  );
+
+  useEffect(() => {
+    headingRef.current = heading;
+  }, [heading]);
 
   useEffect(() => {
     if (cameraPermission && !cameraPermission.granted && cameraPermission.canAskAgain) {
@@ -45,6 +56,7 @@ export default function CompassScreen() {
 
   useEffect(() => {
     let headingSubscription: Location.LocationSubscription | null = null;
+    let positionSubscription: Location.LocationSubscription | null = null;
 
     (async () => {
       const { status } = await Location.requestForegroundPermissionsAsync();
@@ -53,8 +65,12 @@ export default function CompassScreen() {
         return;
       }
 
-      const position = await Location.getCurrentPositionAsync();
-      setCoords(position.coords);
+      positionSubscription = await Location.watchPositionAsync(
+        { accuracy: Location.Accuracy.Balanced, distanceInterval: 50 },
+        (position) => {
+          setCoords(position.coords);
+        }
+      );
 
       headingSubscription = await Location.watchHeadingAsync((update) => {
         const trueOrMagnetic =
@@ -65,8 +81,86 @@ export default function CompassScreen() {
 
     return () => {
       headingSubscription?.remove();
+      positionSubscription?.remove();
     };
   }, []);
+
+  // Recomputes terrain-occlusion status for wineries currently in view, but
+  // only when the user's location has moved meaningfully (or on first fix)
+  // — not on every render or heading update — since each check costs a
+  // network request per winery.
+  useEffect(() => {
+    if (!coords || headingRef.current === null) {
+      return;
+    }
+
+    const last = lastCheckedLocationRef.current;
+    if (last) {
+      const movedMiles = haversineDistanceMiles(
+        last.lat,
+        last.lng,
+        coords.latitude,
+        coords.longitude
+      );
+      if (movedMiles * METERS_PER_MILE < BLOCKED_RECHECK_THRESHOLD_METERS) {
+        return;
+      }
+    }
+
+    lastCheckedLocationRef.current = { lat: coords.latitude, lng: coords.longitude };
+
+    const userElevation = coords.altitude ?? 0;
+    const currentHeading = headingRef.current;
+
+    const wineriesInView = wineries.filter((winery) => {
+      const bearing = getBearing(
+        coords.latitude,
+        coords.longitude,
+        winery.lat,
+        winery.lng
+      );
+      const angleFromHeading = normalizeAngleDiff(bearing - currentHeading);
+      return Math.abs(angleFromHeading) <= HALF_HORIZONTAL_FIELD_OF_VIEW;
+    });
+
+    let cancelled = false;
+
+    (async () => {
+      const results = await Promise.all(
+        wineriesInView.map(async (winery) => ({
+          id: winery.id,
+          blocked: await isLikelyBlocked(
+            coords.latitude,
+            coords.longitude,
+            userElevation,
+            winery.lat,
+            winery.lng,
+            winery.elevation
+          ),
+        }))
+      );
+
+      if (cancelled) {
+        return;
+      }
+
+      setBlockedIds((prev) => {
+        const next = new Set(prev);
+        for (const { id, blocked } of results) {
+          if (blocked) {
+            next.add(id);
+          } else {
+            next.delete(id);
+          }
+        }
+        return next;
+      });
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [coords]);
 
   useEffect(() => {
     DeviceMotion.setUpdateInterval(100);
@@ -166,8 +260,13 @@ export default function CompassScreen() {
           const fractionY = 0.5 - angleFromPitch / VERTICAL_FIELD_OF_VIEW_DEGREES;
           const y = fractionY * height;
 
+          const opacity = blockedIds.has(winery.id) ? BLOCKED_OPACITY : 1;
+
           return (
-            <View key={winery.id} style={[styles.label, { left: x, top: y }]}>
+            <View
+              key={winery.id}
+              style={[styles.label, { left: x, top: y, opacity }]}
+            >
               <Text style={styles.name} numberOfLines={1}>
                 {winery.name}
               </Text>

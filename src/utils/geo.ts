@@ -56,3 +56,69 @@ export function getBearing(
 
   return ((theta * 180) / Math.PI + 360) % 360;
 }
+
+const OPEN_ELEVATION_URL = "https://api.open-elevation.com/api/v1/lookup";
+const BLOCKED_ELEVATION_BUFFER_METERS = 20;
+const SIGHTLINE_SAMPLE_FRACTIONS = [0.25, 0.5, 0.75];
+
+/**
+ * Rough, best-effort check for whether terrain likely blocks the sightline
+ * from the user to a target (e.g. a winery). Samples real elevation at a
+ * few points along the straight line between the two, in a single batched
+ * Open-Elevation request, and compares each against the elevation a
+ * straight, unobstructed sightline would have at that point (simple linear
+ * interpolation between the user's and target's elevation — no earth
+ * curvature correction, since that's negligible at these distances).
+ *
+ * If any sampled point's real elevation exceeds the expected sightline
+ * height by more than a small buffer, the target is considered likely
+ * blocked. This is intentionally rough — it's meant to dim distant/hidden
+ * wineries, not to be a precise line-of-sight calculation.
+ *
+ * Fails open: if the elevation lookup fails for any reason, returns false
+ * (not blocked) rather than retrying or throwing.
+ */
+export async function isLikelyBlocked(
+  userLat: number,
+  userLng: number,
+  userElevation: number,
+  targetLat: number,
+  targetLng: number,
+  targetElevation: number
+): Promise<boolean> {
+  const samplePoints = SIGHTLINE_SAMPLE_FRACTIONS.map((fraction) => ({
+    fraction,
+    latitude: userLat + (targetLat - userLat) * fraction,
+    longitude: userLng + (targetLng - userLng) * fraction,
+  }));
+
+  try {
+    const response = await fetch(OPEN_ELEVATION_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        locations: samplePoints.map(({ latitude, longitude }) => ({
+          latitude,
+          longitude,
+        })),
+      }),
+    });
+
+    if (!response.ok) {
+      return false;
+    }
+
+    const data = await response.json();
+    const elevations: number[] = data.results.map(
+      (result: { elevation: number }) => result.elevation
+    );
+
+    return samplePoints.some(({ fraction }, index) => {
+      const expectedElevation =
+        userElevation + (targetElevation - userElevation) * fraction;
+      return elevations[index] > expectedElevation + BLOCKED_ELEVATION_BUFFER_METERS;
+    });
+  } catch {
+    return false;
+  }
+}
