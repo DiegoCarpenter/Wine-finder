@@ -8,7 +8,10 @@
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.Wine-finder"
+      "bundleIdentifier": "com.anonymous.Wine-finder",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +21,11 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.anonymous.Winefinder"
+      "package": "com.anonymous.Winefinder",
+      "permissions": [
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -30,7 +37,25 @@
         {
           "locationWhenInUsePermission": "Wine Finder uses your location to show nearby wineries and sort them by distance."
         }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Wine Finder uses your camera to overlay nearby wineries on a live view of your surroundings.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-sensors",
+        {
+          "motionPermission": "Wine Finder uses motion sensors to keep winery labels aligned as you tilt your phone."
+        }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "bc709955-3d05-4fbc-a775-08ca883b1791"
+      }
+    }
   }
 }

@@ -10,6 +10,7 @@
     "expo": "~57.0.12",
     "expo-blur": "~57.0.2",
     "expo-camera": "~57.0.3",
+    "expo-dev-client": "~57.0.12",
     "expo-location": "~57.0.9",
     "expo-sensors": "~57.0.2",
     "expo-status-bar": "~57.0.1",
