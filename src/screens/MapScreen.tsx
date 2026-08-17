@@ -21,7 +21,13 @@ const FLAT_MAP_STYLE_URL = "https://demotiles.maplibre.org/style.json";
 // and referenced as a static `process.env.EXPO_PUBLIC_*` expression (no
 // bracket/computed access) for that inlining to work.
 const MAPTILER_API_KEY = process.env.EXPO_PUBLIC_MAPTILER_API_KEY;
-const TERRAIN_SOURCE_ID = "maptiler-terrain";
+const MAPTILER_STYLE_URL = MAPTILER_API_KEY
+  ? `https://api.maptiler.com/maps/outdoor-v2/style.json?key=${MAPTILER_API_KEY}`
+  : null;
+// MapTiler's own "outdoor-v2" style already ships a raster-dem source under
+// this id (used for its 2D hillshading/contour layers) — reuse it for 3D
+// terrain instead of fetching a redundant duplicate DEM source.
+const TERRAIN_SOURCE_ID = "terrain-rgb";
 const TERRAIN_EXAGGERATION = 1.5;
 const FLY_TO_ZOOM = 15;
 const FLY_TO_DURATION_MS = 2500;
@@ -58,36 +64,36 @@ export default function MapScreen() {
     })();
   }, []);
 
-  // Enables 3D terrain by fetching the base style and adding a MapTiler
-  // terrain-RGB source + `terrain` property to it. If no key is configured,
-  // or the fetch fails for any reason, silently keep the flat fallback style.
+  // Switches to MapTiler's "outdoor" style (roads, place names, hillshading
+  // — much more legible than the bare demotiles placeholder) and turns on
+  // its already-bundled terrain-rgb source via the style's `terrain`
+  // property. If no key is configured, or the fetch fails for any reason,
+  // silently keep the flat fallback style.
+  //
+  // Note: as of the pinned MapLibre Native version, `terrain` isn't
+  // rendered yet on mobile (it's still in development upstream — see
+  // https://maplibre.org/news/2026-01-03-maplibre-newsletter-december-2025/).
+  // This is inert until that lands, at which point it should just start
+  // working with no code changes here.
   useEffect(() => {
-    if (!MAPTILER_API_KEY) {
+    if (!MAPTILER_STYLE_URL) {
       return;
     }
 
     (async () => {
       try {
-        const response = await fetch(FLAT_MAP_STYLE_URL);
+        const response = await fetch(MAPTILER_STYLE_URL);
         const baseStyle = await response.json();
 
-        // Drop the fetched style's own default view — demotiles.maplibre.org
-        // bakes in its own center/zoom/bearing/pitch (e.g. zoom ~0.86 on the
-        // Mediterranean), and applying this style wholesale would reset the
-        // live camera to that whole-world view instead of leaving the
+        // Drop the fetched style's own default view (MapTiler's outdoor-v2
+        // bakes in center [0, 0], zoom 1) — applying this style wholesale
+        // would reset the live camera to that instead of leaving the
         // already-established Paso Robles position alone.
         const { center, zoom, bearing, pitch, ...baseStyleWithoutViewState } =
           baseStyle;
 
         setMapStyle({
           ...baseStyleWithoutViewState,
-          sources: {
-            ...baseStyleWithoutViewState.sources,
-            [TERRAIN_SOURCE_ID]: {
-              type: "raster-dem",
-              url: `https://api.maptiler.com/tiles/terrain-rgb-v2/tiles.json?key=${MAPTILER_API_KEY}`,
-            },
-          },
           terrain: {
             source: TERRAIN_SOURCE_ID,
             exaggeration: TERRAIN_EXAGGERATION,
