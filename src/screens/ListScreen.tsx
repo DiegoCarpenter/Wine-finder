@@ -2,13 +2,17 @@ import { useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
+  Pressable,
   StyleSheet,
   Text,
   View,
 } from "react-native";
 import * as Location from "expo-location";
+import { useNavigation } from "@react-navigation/native";
+import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 import wineriesData from "../../data/wineries.json";
+import type { TabParamList } from "../types/navigation";
 import type { Winery } from "../types/winery";
 import { haversineDistanceMiles } from "../utils/geo";
 
@@ -17,6 +21,7 @@ const wineries = wineriesData as Winery[];
 type WineryWithDistance = Winery & { distanceMiles: number | null };
 
 export default function ListScreen() {
+  const navigation = useNavigation<BottomTabNavigationProp<TabParamList>>();
   const [coords, setCoords] = useState<Location.LocationObjectCoords | null>(
     null
   );
@@ -71,14 +76,17 @@ export default function ListScreen() {
         data={sortedWineries}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <View style={styles.row}>
+          <Pressable
+            style={styles.row}
+            onPress={() => navigation.navigate("Map", { wineryId: item.id })}
+          >
             <Text style={styles.name}>{item.name}</Text>
             {item.distanceMiles !== null && (
               <Text style={styles.distance}>
                 {item.distanceMiles.toFixed(1)} mi
               </Text>
             )}
-          </View>
+          </Pressable>
         )}
       />
     </View>

@@ -6,8 +6,9 @@ import { StatusBar } from "expo-status-bar";
 import CompassScreen from "./src/screens/CompassScreen";
 import ListScreen from "./src/screens/ListScreen";
 import MapScreen from "./src/screens/MapScreen";
+import type { TabParamList } from "./src/types/navigation";
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<TabParamList>();
 
 export default function App() {
   return (
